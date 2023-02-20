@@ -53,7 +53,7 @@
 		inchesInput.addEventListener('input', () => {
 			const inchesValue = inchesInput.value;
 			const mmValue = (inchesValue * 25.4).toFixed(4);
-			const frValue = (mmValue / 3).toFixed(4);
+			const frValue = (mmValue * 3).toFixed(4);
 			mmInput.value = mmValue;
 			frInput.value = frValue;
 		});
