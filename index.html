@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Converter</title>
+	<style>
+		label {
+			display: inline-block;
+			width: 100px;
+		}
+		input {
+			width: 150px;
+			box-sizing: border-box;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Converter</h1>
+	<label>FR:</label>
+	<input type="number" id="fr-input" step="0.01" value="0">
+	<br>
+	<label>mm:</label>
+	<input type="number" id="mm-input" step="0.01" value="0">
+	<br>
+	<label>inches:</label>
+	<input type="number" id="inches-input" step="0.01" value="0">
+
+	<script>
+		const frInput = document.getElementById('fr-input');
+		const mmInput = document.getElementById('mm-input');
+		const inchesInput = document.getElementById('inches-input');
+
+		frInput.addEventListener('input', () => {
+			const frValue = frInput.value;
+			const mmValue = (frValue / 3).toFixed(4);
+			const inchesValue = (mmValue / 25.4).toFixed(4);
+			mmInput.value = mmValue;
+			inchesInput.value = inchesValue;
+		});
+
+		mmInput.addEventListener('input', () => {
+			const mmValue = mmInput.value;
+			const frValue = (mmValue * 3).toFixed(4);
+			const inchesValue = (mmValue / 25.4).toFixed(4);
+			frInput.value = frValue;
+			inchesInput.value = inchesValue;
+		});
+
+		inchesInput.addEventListener('input', () => {
+			const inchesValue = inchesInput.value;
+			const mmValue = (inchesValue * 25.4).toFixed(4);
+			const frValue = (mmValue / 3).toFixed(4);
+			mmInput.value = mmValue;
+			frInput.value = frValue;
+		});
+	</script>
+</body>
+</html>
